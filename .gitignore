@@ -6,6 +6,7 @@
 literature/
 data*/
 
+# outputs
 *.pdf
 *.html
 *.doc*
