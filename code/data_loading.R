@@ -31,4 +31,22 @@ marine %>%
   summarise(Length = mean(Length))
 
 aggregate( Length ~ Family, data=marine, FUN = mean)
-  
+
+
+# merging
+
+descriptions <- read.fwf("./dataraw/Chocolate.dat",
+                         widths = c(4,10,46),
+                         col.names = c("CodeNum", "Name", "Description"))
+
+descriptions <- na.omit(descriptions)
+sales <- read.table("./dataraw/chocsales.dat", header = FALSE,
+                    col.names = c("CodeNum", "PiecesSold"))
+
+x <- merge(sales,descriptions, all = TRUE)
+
+#dplyr
+
+x2 <- sales %>%
+  full_join(descriptions, by = "CodeNum")
+
