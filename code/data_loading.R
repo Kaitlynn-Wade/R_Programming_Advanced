@@ -50,3 +50,43 @@ x <- merge(sales,descriptions, all = TRUE)
 x2 <- sales %>%
   full_join(descriptions, by = "CodeNum")
 
+
+#
+library(reshape2)
+baseball <- read.table("./dataraw/Transpos.dat",
+                       head = FALSE, col.names = 
+                         c("Team", "Player", "Type", "Entry"))
+
+baseball.m <- melt(baseball,
+                   idvars = c("Team", "Player", "Type"),
+                   measure.vars = "Entry")
+head(baseball.m)
+
+
+# Exercises
+
+library(MASS)
+data(birthwt)
+
+# code the age of mother in years as less than 20, 20-35, or greater than 35
+mother20 <- subset(birthwt, age <= 20)
+mother35 <- subset(birthwt, age >= 35)
+mother2035 <- subset(birthwt, age >=20 & age <= 35)
+
+#count the number of normal or low birth weight births according to race, coded age, smoking status (smoke), and history of hypertension (ht)
+m <- aggregate(cbind(age, race, smoke, ht) ~low, FUN = sum, data = birthwt)
+
+
+#calculate the percent of each race, age, group, smoking status, and hypertension according to low or normal birth respectively?
+prop.table(m)
+
+# report the data using a flat table, with low as the column variable and the others as row variables
+Low <- xtabs(low ~age+race+smoke+ht, data = birthwt)
+
+ftable(Low, row.vars = c("age","race","smoke","ht"))
+
+
+
+
+
+
