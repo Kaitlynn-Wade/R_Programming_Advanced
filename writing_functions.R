@@ -64,6 +64,9 @@ checkweather <- function(x, verbose = FALSE) {
   32 + 1.8*x
 }
 
+#to get the function in another script
+source(".R_Programming_Advanced/fun_checkweather.R")
+
 tempF = checkweather(50)
 tempF
 
