@@ -86,7 +86,10 @@ Low <- xtabs(low ~age+race+smoke+ht, data = birthwt)
 ftable(Low, row.vars = c("age","race","smoke","ht"))
 
 
+# Exercises from y3 5.8
 
+#the following hypothetical data list the family income and spending for three years of three families.
 
+name <- list("Jones", "Smith", "Jackson")
 
 
