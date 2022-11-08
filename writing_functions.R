@@ -99,3 +99,28 @@ is.leap <- function(x) {
 is.leap(2024)
 is.leap(2023)      
 is.leap(2020)
+
+
+# Y3 Modifying Exercises
+
+## 5.8. Summarize the data by year for each family as a data frame
+
+fam <- read.table("./data/data/fam.txt")
+income <- read.table("./data/data/income.txt")
+attach(fam)
+attach(income)
+
+t <- merge(fam,income, all =TRUE, by = "V1")
+t
+
+## 5.9 Load swimming.txt file, and reshape it to get a data frame with the following columns
+### you may need to assign name to columns manually: treatment subject, time, response
+
+swim <- read.table("./data/data/swimming.txt", col.names = c( "treatment", "subject", "time","response1", "r2","r3","r4","r5","r6"))
+
+library(reshape2)
+swim.m <- melt(swim[2:58,],
+               idvars = c( "treatment", "subject", "time","response1"))
+swim.m
+
+
