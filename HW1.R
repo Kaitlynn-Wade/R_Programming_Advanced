@@ -1,4 +1,5 @@
 # Kaitlynn Wade
+#examples of this homework can be found on Slava's git hub
 
 library(ggplot2)
 library(dplyr)
