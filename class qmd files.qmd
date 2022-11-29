@@ -1,0 +1,40 @@
+---
+title: "Class 11.29"
+author: "Kaitlynn Wade"
+date: today
+format:
+  html:
+  code-fold: true
+  theme: cosmo
+editor: visual
+number-sections: true
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+### Subsection
+
+```{r}
+#| echo: true
+#| fig-cap: "My first figure."
+plot(2 *2)
+```
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
