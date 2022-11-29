@@ -1,0 +1,103 @@
+---
+title: "Class 11.29"
+author: "Kaitlynn Wade"
+date: today
+format:
+  html:
+    code-fold: true
+    theme: cosmo
+editor: visual
+number-sections: true
+bibliography: 
+  - ref.bib
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>. See @tribe1999 hjkkdlfak;liei [@Tribe1999]
+
+$$
+y = a + bx
+$${eq-reg}
+
+where $x$ is the predictor
+
+## Running Code
+
+what a nice model @eq-reg
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+### Subsection  {#sec-important}
+
+you can add options to executable code like this, see @fig-dot @sec-important
+
+```{r}
+#| echo: true
+#| fig-cap: "My first figure."
+#| label: fig-dot
+plot(2 *2)
+```
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this. Estimated using @R-base, plotted using "ggplot2" [@R-ggplot2]
+
+```{r}
+#| echo: false
+#| fig-cap: ggplot example
+
+library(ggplot2)
+library(plotly) #make ggplots interactive
+
+
+ir <- ggplot(iris, aes(x = Species, y = Sepal.Length)) +
+  geom_boxplot() +
+  geom_jitter(size = 0.6, alpha = 0.9, width = 0.2) + #this plots individual points
+  theme_light()
+
+
+ggplotly(ir)
+
+
+
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+```{r}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+    .packages(), 'base', # packages definitely used in the code above
+    'knitr' # packages used to compile the file
+), 'refPackages.bib')
+
+
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%
+  addMarkers(lng = 174.768, lat = -36.852, 
+    popup = "The birthplace of R") # add default openstreet map map tiles
+```
+
+# CART
+
+```{r}
+library(rpart)
+library(rpart.plot)
+#classification
+m0 <- rpart(Species ~ ., data = iris) #uses all variables in the data set
+
+rpart.plot(m0)
+#regression
+
+m1 = rpart(Petal.Width ~ .,
+  control = rpart.control(maxdepth = 2), #simplifies the tree (this setting was used in the paper for hw)
+  data = iris)
+rpart.plot(m1)
+
+
+
+```
